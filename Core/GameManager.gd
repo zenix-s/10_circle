@@ -1,11 +1,14 @@
 extends Node
 
-var mana: float = 0.0
-var mana_regen: float = 0.1
-var circle: int = 1
-var circle_requirement: float = 100.0
 
-var game_speed: int = 1
+var inventory: Dictionary[EnumManager.inventory, int] = {
+	EnumManager.inventory.MANA: 0
+}
+
+
+var stats: Dictionary[EnumManager.stats, float] = {
+	EnumManager.stats.MANA_REGEN: 1,
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,4 +19,4 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_tick() -> void:
-	mana += 1
+	inventory[EnumManager.inventory.MANA] += stats[EnumManager.stats.MANA_REGEN]

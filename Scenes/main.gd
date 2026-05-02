@@ -9,4 +9,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	mana.text = str(GameManager.mana)
+	mana.text = str(GameManager.inventory[EnumManager.inventory.MANA])
