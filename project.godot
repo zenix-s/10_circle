@@ -21,6 +21,10 @@ GameManager="*uid://crmu2hqe1q0jo"
 TickManager="*uid://b6qrwsy3hcu1h"
 EnumManager="*uid://bfbvagoph256b"
 
+[dotnet]
+
+project/assembly_name="10_circle"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

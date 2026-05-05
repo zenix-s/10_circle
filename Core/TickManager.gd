@@ -3,6 +3,7 @@ extends Node
 signal tick()
 
 var _accumulator: float = 0.0
+# TODO: el tick_rate deberia de verse afecta por stats o ser incluso un stat en si mismo, pero por ahora lo dejo asi
 var tick_rate: float = 1.0
 
 # Called when the node enters the scene tree for the first time.

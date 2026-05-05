@@ -6,7 +6,7 @@ var inventory: Dictionary[EnumManager.inventory, int] = {
 }
 
 
-var stats: Dictionary[EnumManager.stats, float] = {
+var stats: Dictionary[EnumManager.stats, int] = {
 	EnumManager.stats.MANA_REGEN: 1,
 }
 
@@ -15,8 +15,8 @@ func _ready() -> void:
 	TickManager.tick.connect(_on_tick)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+# func _process(delta: float) -> void:
+# 	pass
 
 func _on_tick() -> void:
 	inventory[EnumManager.inventory.MANA] += stats[EnumManager.stats.MANA_REGEN]
