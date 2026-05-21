@@ -1,8 +1,8 @@
 namespace CircleGame.Core.Commands;
 
-public static class CommandExecutor
+public class CommandExecutor(GameManager gameManager)
 {
-    public static void TryExecuteCommand(this IGameCommand command, GameManager gameManager)
+    public void TryExecute(IGameCommand command)
     {
         if (command.CanExecute(gameManager))
         {

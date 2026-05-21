@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using CircleGame.Core.Systems.Stats;
 
-namespace CircleGame.Core.Domain.PassiveSpells;
+namespace CircleGame.Core.Systems.PassiveSpells;
 
 public class PassiveSpell
 {
-    public PassiveSpell(PassiveSpellType type, string name, int level, BaseStats effect, List<float> effectValuesPerLevel)
+    public PassiveSpell(PassiveSpellType type, string name, int level, BaseStat effect, List<float> effectValuesPerLevel)
     {
         Type = type;
         Name = name;
@@ -14,7 +14,7 @@ public class PassiveSpell
         EffectValuesPerLevel = effectValuesPerLevel;
     }
 
-    public PassiveSpell(PassiveSpellType type ,string name, BaseStats effect, List<float> effectValuesPerLevel)
+    public PassiveSpell(PassiveSpellType type, string name, BaseStat effect, List<float> effectValuesPerLevel)
         : this(type, name, 0, effect, effectValuesPerLevel)
     {
     }
@@ -23,7 +23,7 @@ public class PassiveSpell
     public string Name { get; set; }
     public int Level { get; set; }
 
-    public BaseStats Effect { get; set; }
+    public BaseStat Effect { get; set; }
     public List<float> EffectValuesPerLevel { get; set; }
 
     public void LevelUp()
@@ -33,4 +33,7 @@ public class PassiveSpell
             Level++;
         }
     }
+
+    public PassiveSpell Clone() =>
+        new PassiveSpell(Type, Name, Level, Effect, new List<float>(EffectValuesPerLevel));
 }

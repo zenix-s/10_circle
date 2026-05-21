@@ -1,32 +1,38 @@
-using System.Collections.Generic;
-using CircleGame.Core.Domain.PassiveSpells;
+using CircleGame.Core.Commands;
+using CircleGame.Core.Queries;
+using CircleGame.Core.Systems.PassiveSpells;
 using CircleGame.Core.Systems.Stats;
 
 namespace CircleGame.Core;
 
 public class GameManager
 {
-	private readonly TickManager _tickManager = new();
-	
-	public  readonly PassiveSpellManager PassiveSpellManager = new();
+    private readonly TickManager _tickManager = new();
 
-	public StatManager Stats { get; }
+    public readonly PassiveSpellManager PassiveSpellManager = new();
 
-	public float Mana { get; set; } = 0f;
-	
-	public GameManager()
-	{
-		Stats = new StatManager(this);
-		_tickManager.Tick += OnTick;
-	}
+    public StatManager Stats { get; }
+    public CommandExecutor Commands { get; }
+    public QueryExecutor Queries { get; }
 
-	public void ProcessTime(double delta)
-	{
-		_tickManager.ProcessTime(delta);
-	}
+    public float Mana { get; set; } = 0f;
 
-	private void OnTick()
-	{
-		Mana += Stats.GetFinal(BaseStats.ManaRegen);
-	}
+    public GameManager()
+    {
+        Stats = new StatManager();
+        Stats.RegisterSource(PassiveSpellManager);
+        Commands = new CommandExecutor(this);
+        Queries = new QueryExecutor(this);
+        _tickManager.Tick += OnTick;
+    }
+
+    public void ProcessTime(double delta)
+    {
+        _tickManager.ProcessTime(delta);
+    }
+
+    private void OnTick()
+    {
+        Mana += Stats.GetFinal(BaseStat.ManaRegen);
+    }
 }

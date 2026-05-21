@@ -1,10 +1,8 @@
-using CircleGame.Core.Queries;
+namespace CircleGame.Core.Queries;
 
-namespace CircleGame.Core.Commands;
-
-public static class QueryExecutor
+public class QueryExecutor(GameManager gameManager)
 {
-    public static T TryExecuteQuery<T>(this IGameQuery<T> query, GameManager gameManager)
+    public T Execute<T>(IGameQuery<T> query)
     {
         return query.Get(gameManager);
     }
