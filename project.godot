@@ -12,14 +12,12 @@ config_version=5
 
 config/name="10_circle"
 run/main_scene="uid://cgdv1c7kyv5tx"
-config/features=PackedStringArray("4.6", "Mobile")
+config/features=PackedStringArray("4.6", "C#", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*uid://crmu2hqe1q0jo"
-TickManager="*uid://b6qrwsy3hcu1h"
-EnumManager="*uid://bfbvagoph256b"
+Circle="*res://Circle.cs"
 
 [dotnet]
 
