@@ -6,6 +6,11 @@ public enum ModifierType
     Multiplier
 }
 
+public enum BaseStat
+{
+    ManaRegen
+}
+
 public readonly struct StatModifier(float value, ModifierType type)
 {
     public float Value { get; } = value;

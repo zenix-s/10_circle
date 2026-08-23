@@ -1,21 +1,29 @@
-using System;
+using Godot;
 
 namespace CircleGame.Core;
 
-public class TickManager
+public partial class TickManager : Node
 {
-	public event Action Tick;
+	public static TickManager Instance { get; private set; }
+
+	[Signal]
+	public delegate void TickEventHandler();
 
 	public float TickRate = 1f;
 	private float _accumulator = 0f;
 
-	public void ProcessTime(double delta)
+	public override void _EnterTree()
+	{
+		Instance = this;
+	}
+
+	public override void _Process(double delta)
 	{
 		_accumulator += (float)delta;
 		while (_accumulator >= TickRate)
 		{
 			_accumulator -= TickRate;
-			Tick?.Invoke();
+			EmitSignal(SignalName.Tick);
 		}
 	}
 }

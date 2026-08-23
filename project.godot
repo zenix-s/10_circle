@@ -17,7 +17,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Circle="*res://Circle.cs"
+StatManager="*res://Core/Systems/Stats/StatManager.cs"
+TickManager="*res://Core/TickManager.cs"
+PassiveSpellManager="*res://Core/Systems/PassiveSpells/PassiveSpellManager.cs"
+ManaManager="*res://Core/Systems/Mana/ManaManager.cs"
+TowerManager="*res://Core/Systems/Tower/TowerManager.cs"
+ActiveSpellManager="*res://Core/Systems/ActiveSpells/ActiveSpellManager.cs"
+SceneManager="*res://Autoload/SceneManager.cs"
 
 [dotnet]
 
